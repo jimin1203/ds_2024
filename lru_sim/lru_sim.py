@@ -18,7 +18,7 @@ class CacheSimulator:
         self.tot_cnt+=1
 
     def print_stats(self):
-        print("cache_slot = ", self.cache_size, "cache_hit = ", self.cache_hit, "hit ratio = ", round(self.cache_hit / self.tot_cnt, 4))
+        print("cache_slot = ", self.cache_size, "cache_hit = ", self.cache_hit, "hit ratio = ", self.cache_hit / self.tot_cnt, 4)
 
 
 if __name__ == "__main__":
