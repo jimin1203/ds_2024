@@ -121,7 +121,7 @@ class CircularLinkedList:
         for element in a:
             self.append(element)
 
-    def __findNode(self, x): 
+    def __findNode(self, x): # LRU 할 때 옆에 () 빼야함
         __head = prev= self.__tail.next 
         curr= prev.next 
         while curr!= __head: 
