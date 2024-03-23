@@ -5,17 +5,16 @@ class CacheSimulator:
         self.cache_hit = 0
         self.tot_cnt = 1
 
-    
     def do_sim(self, page):
-        if page in self.cache_slots:
-            self.cache_slots.remove(page)
-            self.cache_slots.append(page)
-            self.cache_hit+=1
-        else:
-            if len(self.cache_slots) >= self.cache_size:
-                self.cache_slots.pop(0)
-            self.cache_slots.append(page)
-        self.tot_cnt+=1
+        if page in self.cache_slots: # 기존 리스트에 page가 있다면
+            self.cache_slots.remove(page) # 리스트에 있던 page 삭제
+            self.cache_slots.append(page) # 리스트 맨 뒤에 page 추가
+            self.cache_hit+=1 # 캐시 히트 횟수 추가
+        else: # 기존 리스트에 page가 없다면
+            if len(self.cache_slots) >= self.cache_size: # 캐시가 꽉 찼을 경우
+                self.cache_slots.pop(0) # 가장 오래된 page 제거
+            self.cache_slots.append(page) # 리스트 맨 뒤에 page 추가
+        self.tot_cnt+=1 # 엑세스 횟수 추가
 
     def print_stats(self):
         print("cache_slot = ", self.cache_size, "cache_hit = ", self.cache_hit, "hit ratio = ", self.cache_hit / self.tot_cnt)
