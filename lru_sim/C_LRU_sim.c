@@ -15,7 +15,7 @@ typedef struct CircularLinkedList {
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (!newNode) { 
-        perror("Failed to allocate memory for new node");
+        perror("새 노드에 메모리 할당 실패");
         exit(EXIT_FAILURE);
     }
     newNode->data = data;
@@ -79,7 +79,7 @@ void simulateLRUCache(char* filename, int cache_size) {
 
     FILE* file = fopen(filename, "r");
     if (!file) {
-        perror("Failed to open file");
+        perror("파일 열기 실패");
         exit(EXIT_FAILURE);
     }
     
