@@ -6,9 +6,9 @@ class ListQueue:
 		self.__queue.append(x)
 
 	def dequeue(self):
-		return self.__queue.pop(0) # .pop(0): 리스트의 첫 원소를 삭제한 후 원소 리턴
+		return self.__queue.pop(0) # .pop(0): 리스트의 첫 원소를 삭제한 후 원소 리턴한다
 
-	def front(self):
+	def front(self): 
 		if self.isEmpty():
 			return None
 		else:
