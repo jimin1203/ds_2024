@@ -11,10 +11,10 @@ class Producer:
 
     def run(self): 
         for customer in self.customers:
+            time.sleep(0.2) 
             level, name = customer
             self.ranks[level].enqueue(name)
             print(f"Arrived: {name} (Level: {level})")
-            time.sleep(0.2)  
         print("Producer is dying...")
 
     def start(self):
@@ -33,11 +33,13 @@ class Consumer: # 멀티스레딩 환경에서 독립적임.
 
     def run(self): # 스레드에 의해 별도의 실행 흐름에서 호출
         while self.__alive:
-            time.sleep(1)
             for level in ["3", "2", "1"]:
-                while not self.ranks[level].isEmpty():
+                if not self.ranks[level].isEmpty():
+                    time.sleep(1)
                     customer = self.ranks[level].dequeue()
                     print(f"Boarding: {customer} (Level: {level})")
+                    break
+                    
         print("Consumer is dying...")
 
     def start(self):
